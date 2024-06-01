@@ -11,6 +11,11 @@ import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { APP_FILTER, APP_GUARD } from '@nestjs/core';
 import { JwtModule } from '@nestjs/jwt';
 import { HttpModule } from '@nestjs/axios';
+import { UserModule } from './user/module';
+import { WalletModule } from './wallet/module';
+import { AuthenticationModule } from './authentication/module';
+import { TransactionModule } from './transaction/module';
+import { ShofreeModule } from './shofree/module';
 
 @Module({
   imports: [
@@ -30,6 +35,11 @@ import { HttpModule } from '@nestjs/axios';
       },
     }),
     HttpModule,
+    ShofreeModule,
+    UserModule,
+    WalletModule,
+    TransactionModule,
+    AuthenticationModule,
   ],
   controllers: [],
   providers: [

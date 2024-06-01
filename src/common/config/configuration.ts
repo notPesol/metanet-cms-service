@@ -11,4 +11,7 @@ export default () => ({
   jwt: {
     secret: process.env.JWT_SECRET || 'must_secret_ok!',
   },
+  shofree: {
+    host: process.env.SHOFREE_HOST || 'http://localhost:5091',
+  },
 });

@@ -25,4 +25,13 @@ export class SearchDTO {
   @IsOptional()
   @Transform((params) => params.value === 'true')
   count: boolean;
+
+  @IsString()
+  @IsOptional()
+  orderBy: string;
+
+  @IsString()
+  @IsOptional()
+  @Transform((params) => (params.value === 'DESC' ? 'DESC' : 'ASC'))
+  orderType: string = 'ASC';
 }

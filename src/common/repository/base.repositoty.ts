@@ -7,7 +7,7 @@ import {
   NonNullFindOptions,
 } from 'sequelize';
 
-export abstract class BaseRepoSitory implements OnApplicationBootstrap {
+export abstract class BaseRepository implements OnApplicationBootstrap {
   protected model: ModelCtor<any>;
 
   protected init() {}

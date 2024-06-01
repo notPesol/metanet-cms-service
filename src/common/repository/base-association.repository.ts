@@ -1,7 +1,7 @@
 import { Includeable } from 'sequelize';
-import { BaseRepoSitory } from './base.repositoty';
+import { BaseRepository } from './base.repositoty';
 
-export abstract class BaseAssociationRepository extends BaseRepoSitory {
+export abstract class BaseAssociationRepository extends BaseRepository {
   protected includeOptions: Map<string, Includeable | Includeable[]>;
 
   constructor() {

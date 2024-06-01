@@ -1,12 +1,12 @@
 import { FindOptions, Model, NonNullFindOptions } from 'sequelize';
-import { BaseRepoSitory } from '../repository/base.repositoty';
+import { BaseRepository } from '../repository/base.repositoty';
 import { SearchDTO } from '../dto/search.dto';
 import { ResponseDTO } from '../dto/response.dto';
 
 export class BaseService<T> {
-  protected readonly repository: BaseRepoSitory;
+  protected readonly repository: BaseRepository;
 
-  constructor(repository: BaseRepoSitory) {
+  constructor(repository: BaseRepository) {
     this.repository = repository;
   }
 
@@ -33,6 +33,10 @@ export class BaseService<T> {
     if (!searchDTO.ignorePage) {
       options['offset'] = (searchDTO.page - 1) * searchDTO.limit;
       options['limit'] = searchDTO.limit;
+    }
+
+    if (searchDTO.orderBy) {
+      options['order'] = [[searchDTO.orderBy, searchDTO.orderType]]
     }
 
     const responseDTO = new ResponseDTO<T[]>();
