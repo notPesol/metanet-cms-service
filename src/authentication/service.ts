@@ -118,7 +118,7 @@ export class AuthenticationService {
 
     const userAssociationDTO = await this.findOne(
       user.username,
-      IncludeKey.userWallet,
+      null,
     );
 
     delete userAssociationDTO.passwordHash;
