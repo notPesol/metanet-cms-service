@@ -26,15 +26,19 @@ export class SequelizeService implements OnModuleInit {
   constructor(private readonly configService: ConfigService) {
     this.dbConfig = this.configService.get<IDatabase>('database');
 
-    this.sequelize = new Sequelize({
+    const config = {
       host: this.dbConfig.host,
       dialect: this.dbConfig.dialect,
       username: this.dbConfig.username,
-      // password: this.dbConfig.password,
       port: this.dbConfig.port,
       database: this.dbConfig.database,
-      
-    });
+    };
+
+    if (this.dbConfig.password) {
+      config['password'] = this.dbConfig.password;
+    }
+
+    this.sequelize = new Sequelize(config);
   }
 
   getSequelize(): Sequelize {
